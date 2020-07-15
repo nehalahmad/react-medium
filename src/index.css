@@ -2,3 +2,11 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+
+.pagination {
+  flex-wrap: wrap;
+}
+
+.comment-row {
+  margin-bottom: 20px;
+}

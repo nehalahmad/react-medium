@@ -6,7 +6,7 @@ const initialState = {
   globalFeedsCount: 0,
   loading: false,
   error: null,
-  limit: 10,
+  limit: 12,
   offset: 0,
 };
 

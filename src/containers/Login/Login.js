@@ -72,20 +72,27 @@ class Login extends Component {
       });
     }
 
-    let form = formElemetsArr.map((formElement) => {
-      return (
-        <Input
-          key={formElement.id}
-          elementType={formElement.config.elementType}
-          elementConfig={formElement.config.elementConfig}
-          value={formElement.config.value}
-          changed={(e) => this.inputChangeHandler(e, formElement.id)}
-          invalid={!formElement.config.valid}
-          shouldValidate={formElement.config.validation}
-          touched={formElement.config.touched}
-        />
-      );
-    });
+    let form = (
+      <form onSubmit={this.onSubmitHandler}>
+        {formElemetsArr.map((formElement) => {
+          return (
+            <Input
+              key={formElement.id}
+              elementType={formElement.config.elementType}
+              elementConfig={formElement.config.elementConfig}
+              value={formElement.config.value}
+              changed={(e) => this.inputChangeHandler(e, formElement.id)}
+              invalid={!formElement.config.valid}
+              shouldValidate={formElement.config.validation}
+              touched={formElement.config.touched}
+            />
+          );
+        })}
+        <Button variant="primary" type="submit">
+          SUBMIT
+        </Button>
+      </form>
+    );
 
     if (this.props.loading) {
       form = <Spinner />;
@@ -108,12 +115,7 @@ class Login extends Component {
       <div className="auth">
         {authRedirect}
         {errorMessage}
-        <form onSubmit={this.onSubmitHandler}>
-          {form}
-          <Button variant="primary" type="submit">
-            SUBMIT
-          </Button>
-        </form>
+        {form}
       </div>
     );
   }

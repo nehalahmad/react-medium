@@ -10,9 +10,10 @@ export const fetchGlobalFeedsStart = () => ({
   type: actionTypes.FETCH_GLOBAL_FEEDS_START,
 });
 
-export const fetchGlobalFeedsSuccess = (globalFeeds) => ({
+export const fetchGlobalFeedsSuccess = (globalFeeds, globalFeedsCount) => ({
   type: actionTypes.FETCH_GLOBAL_FEEDS_SUCCESS,
   globalFeeds,
+  globalFeedsCount,
 });
 
 export const fetchGlobalFeedsFail = (error) => ({

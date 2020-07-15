@@ -17,6 +17,12 @@ const asyncArticles = asyncComponent(() =>
 const asyncAddArticle = asyncComponent(() =>
   import("./containers/Articles/AddArticle/AddArticle")
 );
+const asyncArticleDetail = asyncComponent(() =>
+  import("./containers/Articles/ArticleDetail/ArticleDetail")
+);
+const asyncEditArticle = asyncComponent(() =>
+  import("./containers/Articles/EditArticle/EditArticle")
+);
 
 class App extends Component {
   render() {
@@ -25,6 +31,7 @@ class App extends Component {
         <Route path="/login" component={asyncLogin} />
         <Route path="/register" component={asyncRegister} />
         <Route path="/articles" component={asyncArticles} />
+        <Route path="/article/:slug" component={asyncArticleDetail} />
         <Route path="/" exact component={GlobalFeeds} />
         <Redirect to="/" />
       </Switch>
@@ -36,7 +43,9 @@ class App extends Component {
           <Route path="/login" component={asyncLogin} />
           <Route path="/register" component={asyncRegister} />
           <Route path="/articles" component={asyncArticles} />
-          <Route path="/add-article" component={asyncAddArticle} />
+          <Route path="/article/add" component={asyncAddArticle} />
+          <Route path="/article/:slug" component={asyncArticleDetail} />
+          <Route path="/article/:slug/edit" component={asyncEditArticle} />
           <Route path="/" exact component={GlobalFeeds} />
           <Redirect to="/" />
         </Switch>
