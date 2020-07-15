@@ -61,6 +61,14 @@ class CommentForm extends Component {
       this.state.commentForm.comment.value,
       this.props.slug
     );
+
+    const updatedFormElement = updateObject(this.state.commentForm["comment"], {
+      value: "",
+    });
+    const updatedCommentForm = updateObject(this.state.commentForm, {
+      comment: updatedFormElement,
+    });
+    this.setState({ commentForm: updatedCommentForm });
   }
 
   render() {

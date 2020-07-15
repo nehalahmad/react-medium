@@ -30,7 +30,7 @@ class ArticleDetail extends Component {
   }
 
   editArticleClickHandler() {
-    this.props.history.push(`/article/${this.props.match.params.slug}/edit`);
+    this.props.history.push(`/article/edit/${this.props.match.params.slug}`);
   }
 
   isOwner() {
@@ -39,6 +39,12 @@ class ArticleDetail extends Component {
       this.props.currentUser === this.props.article.author.username
     );
   }
+
+  deleteCommentClickHandler = (id, slug) => {
+    if (window.confirm("Are you sure want to delete this comment?")) {
+      this.props.onDeleteComment(id, slug);
+    }
+  };
 
   render() {
     let article = this.props.error ? (
@@ -53,7 +59,7 @@ class ArticleDetail extends Component {
         comments = (
           <Comments
             comments={this.props.comments}
-            deleteCommentClickHandler={this.onDeleteComment}
+            onDeleteCommentClickHandler={this.deleteCommentClickHandler}
             slug={this.props.match.params.slug}
             isOwner={this.isOwner()}
           />
@@ -66,6 +72,7 @@ class ArticleDetail extends Component {
             <Row>
               <Col>
                 <p className="h2">{this.props.article.title}</p>
+                <p className="h5">{this.props.article.description}</p>
                 <p className="h6">{this.props.article.body}</p>
               </Col>
               {this.isOwner() && (

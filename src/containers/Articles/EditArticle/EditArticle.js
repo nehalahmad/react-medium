@@ -17,7 +17,7 @@ class EditArticle extends Component {
       prevProps.article &&
       prevProps.article.updatedAt !== this.props.article.updatedAt
     ) {
-      this.props.history.push(`/article/${this.props.match.params.slug}`);
+      this.props.history.push(`/article/detail/${this.props.match.params.slug}`);
     }
   }
 

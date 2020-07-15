@@ -10,7 +10,7 @@ import * as actions from "../../../store/actions";
 class AddArticle extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.article.slug) {
-      this.props.history.push(`/article/${this.props.article.slug}`);
+      this.props.history.push(`/article/detail/${this.props.article.slug}`);
     }
   }
 

@@ -23,6 +23,16 @@ export class GlobalFeeds extends Component {
     this.setState({ currentPage: offset / 10 });
   }
 
+  editArticleClickHandler = (slug) => {
+    this.props.history.push(`/article/edit/${slug}`);
+  };
+
+  deleteArticleClickHandler = (slug) => {
+    if (window.confirm("Are your sure want to delete?")) {
+      this.props.onArticleDelete(slug);
+    }
+  };
+
   render() {
     const { globalFeeds } = this.props;
 
@@ -36,6 +46,8 @@ export class GlobalFeeds extends Component {
           key={feed.slug}
           link={feed.slug}
           currentUser={this.props.currentUser}
+          onEditArticleClickHandler={this.editArticleClickHandler}
+          onDeleteArticleClickHandler={this.deleteArticleClickHandler}
         />
       ));
 
@@ -60,6 +72,9 @@ export class GlobalFeeds extends Component {
         <Row>
           <Col sm="12">
             <CardColumns>{renderedGlobalFeeds}</CardColumns>
+
+            <br />
+            <br />
           </Col>
           <Col sm="12">
             <Pagination>{pages}</Pagination>
@@ -84,6 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
   onFetchGlobalFeeds: (limit, offset) =>
     dispatch(actions.fetchGlobalFeeds(limit, offset)),
   onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
+  onArticleDelete: (slug) => dispatch(actions.deleteArticle(slug)),
 });
 
 export default connect(

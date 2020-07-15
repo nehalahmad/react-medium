@@ -28,3 +28,47 @@ export const checkValidity = (value, rules) => {
   }
   return isValid;
 };
+
+export const calcTime = (inputDate) => {
+  console.log(inputDate);
+  let dateDiff = new Date(Date.now() - new Date(inputDate).getTime());
+
+  let hrDiff = dateDiff.getHours();
+  let minDiff = dateDiff.getMinutes();
+  let secDiff = dateDiff.getSeconds();
+
+  let calcTime = "";
+  if (hrDiff) {
+    calcTime += hrDiff;
+    if (hrDiff > 1) {
+      calcTime += " hours ";
+    } else {
+      calcTime += " hour ";
+    }
+
+    return calcTime + " ago";
+  }
+
+  if (minDiff) {
+    calcTime += minDiff;
+
+    if (minDiff > 1) {
+      calcTime += " minutes ";
+    } else {
+      calcTime += " minute ";
+    }
+
+    return calcTime + " ago";
+  }
+
+  if (secDiff) {
+    calcTime += secDiff;
+
+    if (secDiff > 1) {
+      calcTime += " seconds ";
+    } else {
+      calcTime += " second ";
+    }
+    return calcTime + " ago";
+  }
+};

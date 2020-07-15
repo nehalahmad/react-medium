@@ -12,7 +12,9 @@ const Comments = (props) =>
             <Col sm="auto">
               <Button
                 variant="light"
-                onClick={() => props.onDeleteComment(comment.id, props.slug)}
+                onClick={() =>
+                  props.onDeleteCommentClickHandler(comment.id, props.slug)
+                }
               >
                 <i className="fa fa-trash"></i>
               </Button>

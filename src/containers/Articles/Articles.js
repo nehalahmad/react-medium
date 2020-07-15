@@ -42,7 +42,7 @@ class Articles extends Component {
   }
 
   editArticleClickHandler = (slug) => {
-    this.props.history.push(`article/${slug}/edit`);
+    this.props.history.push(`/article/edit/${slug}`);
   };
 
   deleteArticleClickHandler = (slug) => {

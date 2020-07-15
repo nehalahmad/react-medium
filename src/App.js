@@ -31,7 +31,11 @@ class App extends Component {
         <Route path="/login" component={asyncLogin} />
         <Route path="/register" component={asyncRegister} />
         <Route path="/articles" component={asyncArticles} />
-        <Route path="/article/:slug" component={asyncArticleDetail} />
+        <Route
+          path="/article/detail/:slug"
+          exact
+          component={asyncArticleDetail}
+        />
         <Route path="/" exact component={GlobalFeeds} />
         <Redirect to="/" />
       </Switch>
@@ -44,8 +48,16 @@ class App extends Component {
           <Route path="/register" component={asyncRegister} />
           <Route path="/articles" component={asyncArticles} />
           <Route path="/article/add" component={asyncAddArticle} />
-          <Route path="/article/:slug" component={asyncArticleDetail} />
-          <Route path="/article/:slug/edit" component={asyncEditArticle} />
+          <Route
+            path="/article/detail/:slug"
+            exact
+            component={asyncArticleDetail}
+          />
+          <Route
+            path="/article/edit/:slug"
+            exact
+            component={asyncEditArticle}
+          />
           <Route path="/" exact component={GlobalFeeds} />
           <Redirect to="/" />
         </Switch>

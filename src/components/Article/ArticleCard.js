@@ -15,7 +15,7 @@ const articleCard = (props) => {
       <Card.Footer>
         <Row>
           <Col>
-            <NavLink to={`/article/${props.link}`} className="article-title">
+            <NavLink to={`/article/detail/${props.link}`} className="article-title">
               {props.article.title}
             </NavLink>
           </Col>
