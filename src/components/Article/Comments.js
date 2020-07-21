@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { Button, Row, Col } from "react-bootstrap";
 
 const Comments = (props) =>
@@ -23,7 +24,10 @@ const Comments = (props) =>
         </Row>
         <Row className="justify-content-sm-end">
           <Col sm="auto">
-            <small>~ {comment.author.username}</small>
+            <small>
+              ~ {comment.author.username} (
+              {moment(comment.author.updatedAt).fromNow()})
+            </small>
           </Col>
         </Row>
       </Col>
